@@ -8,19 +8,24 @@ import javax.swing.DebugGraphics;
 
 @SuppressWarnings("serial")
 public class Circling extends Canvas { 
-//	DebugGraphics dg; 
 	
-	public Circling() { 
-		//dg = new DebugGraphics(); 
-		setSize(3000,1500); 
-		setBackground( Color.PINK );
+	public Circling( int i ) { 
+		setSize(1000,400); 
+		if (i == 1 ) { 
+			setBackground( Color.PINK );
+		}
+		else { 
+			setBackground( Color.BLUE );
+		}
+		
 	}
 	
 	@Override 
-	public void paint(Graphics g) { 
+	public void paint(Graphics g) {
+		System.out.println("hi");
 		Graphics2D g2; 
 		g2 =  (Graphics2D) g; 
-		g.drawRect(100, 100, 100, 150);
+		g2.drawRect(100, 100, 100, 150);
 	}
 	
 }

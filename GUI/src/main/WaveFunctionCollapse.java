@@ -1,14 +1,21 @@
 package main;
 
+import ui.Window;
 import wave.music.WaveFunction;
 import wave.music.note.CollapsedNote;
-import wave.music.note.Note;
 import wave.music.song.InputSong;
-import wave.music.song.OutputSong;
 
 public class WaveFunctionCollapse {
 
 	public static void main(String[] args) {
+        //Schedule a job for the event-dispatching thread:
+        //creating and showing this application's GUI.
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new Window();
+            }
+        });
+        
 		InputSong song = new InputSong();
 		song.addNote(new CollapsedNote(0));
 		song.addNote(new CollapsedNote(1));
@@ -35,16 +42,7 @@ public class WaveFunctionCollapse {
 		
 		while(!func.complete()) {
 			func.update();
-			System.out.println("Song:");
 			
-			OutputSong outputSong = func.getCompleteSong();
-			for(Note n: outputSong.getNotes()) {
-				if(n instanceof CollapsedNote)
-					System.out.print(((CollapsedNote) n).getNote() + " ");
-				else
-					System.out.print("? ");
-			}
-			System.out.println();
 		}
 	}
 	
