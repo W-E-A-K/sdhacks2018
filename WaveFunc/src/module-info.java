@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author Rathlak
- *
- */
-module waveFuncMusic {
-}
