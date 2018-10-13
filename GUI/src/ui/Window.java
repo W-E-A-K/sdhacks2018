@@ -23,8 +23,8 @@ public class Window {
 
         
         controlPanel = new Panel(); 
-        controlPanel.add( new Circling( 2 ) );
-        controlPanel.add( new Circling( 1 ) );
+        controlPanel.add( new CircleCanvas() );
+        controlPanel.add( new NoteCanvas() );
         controlPanel.setLayout(new BoxLayout(controlPanel, 1));
         
         frame.add(controlPanel);

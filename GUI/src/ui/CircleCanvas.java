@@ -4,19 +4,12 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-import javax.swing.DebugGraphics;
-
 @SuppressWarnings("serial")
-public class Circling extends Canvas { 
+public class CircleCanvas extends Canvas { 
 	
-	public Circling( int i ) { 
+	public CircleCanvas() { 
 		setSize(1000,400); 
-		if (i == 1 ) { 
-			setBackground( Color.PINK );
-		}
-		else { 
-			setBackground( Color.BLUE );
-		}
+		setBackground( Color.PINK );
 		
 	}
 	
