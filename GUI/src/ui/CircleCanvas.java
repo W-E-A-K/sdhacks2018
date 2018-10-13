@@ -21,4 +21,8 @@ public class CircleCanvas extends Canvas {
 		g2.drawRect(100, 100, 100, 150);
 	}
 	
+	public void addCircle( ) { 
+		
+	}
+	
 }
