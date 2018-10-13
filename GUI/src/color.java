@@ -1,12 +1,14 @@
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.GridLayout;
+
 import javax.swing.JFrame;
 import java.lang.Thread;
 
 
 class myColor {
 	int[] notes;
-	int delay = 1000;
+	private int delay = 1000;
 	
 	myColor(int[] n)
 	{
@@ -38,6 +40,7 @@ class myColor {
 	{
 		Container c = f.getContentPane();
 		Color[] colorArr = colorArray();
+
 		for (int i = 0; i < colorArr.length; ++i)
 		{	
 			c.setBackground(colorArr[i]);
@@ -57,6 +60,7 @@ public class color {
 	public static void main(String[] args)
 	{
 		JFrame f = new JFrame();
+		f.setLayout(new GridLayout(2, 1));
 		
 		int[] notes = new int[] {1,3,8,4,3,2,2,10,1,3,4,0,1,0};
 		myColor col = new myColor(notes);
