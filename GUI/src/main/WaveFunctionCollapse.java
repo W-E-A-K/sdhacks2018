@@ -8,13 +8,6 @@ import wave.music.song.InputSong;
 public class WaveFunctionCollapse {
 
 	public static void main(String[] args) {
-        //Schedule a job for the event-dispatching thread:
-        //creating and showing this application's GUI.
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new Window();
-            }
-        });
         
 		InputSong song = new InputSong();
 		song.addNote(new CollapsedNote(0));
@@ -40,10 +33,27 @@ public class WaveFunctionCollapse {
 		song.addNote(new CollapsedNote(0));
 		WaveFunction func = new WaveFunction(song);
 		
-		while(!func.complete()) {
-			func.update();
-			
-		}
+        //Schedule a job for the event-dispatching thread:
+        //creating and showing this application's GUI.
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                Window window = new Window();
+                while(true) {
+            		
+            		if(!func.complete()) {
+            			func.update();
+            			
+            		}
+                	
+                	try{
+                		Thread.sleep(500);
+                	}
+                	catch(InterruptedException e){
+                		System.out.println(e);
+                	}
+                }
+            }
+        });
 	}
 	
 }
