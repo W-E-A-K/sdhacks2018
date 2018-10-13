@@ -1,5 +1,6 @@
-package wave.music;
+package main;
 
+import wave.music.WaveFunction;
 import wave.music.note.CollapsedNote;
 import wave.music.note.Note;
 import wave.music.song.InputSong;

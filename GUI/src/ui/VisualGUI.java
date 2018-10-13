@@ -1,3 +1,4 @@
+package ui;
 /*
  * HelloWorldSwing.java requires no other files. 
  */
