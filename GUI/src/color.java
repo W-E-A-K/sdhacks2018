@@ -6,7 +6,7 @@ import java.lang.Thread;
 
 class myColor {
 	int[] notes;
-	int one_sec = 1000;
+	int delay = 1000;
 	
 	myColor(int[] n)
 	{
@@ -14,7 +14,6 @@ class myColor {
 	}
 	
 	// returns an array of color objects from notes
-
 	Color[] colorArray()
 	{
 		Color[] colorArray = new Color[notes.length]; 
@@ -34,6 +33,23 @@ class myColor {
 		double hue = n*0.1;
 		return Color.getHSBColor((float)hue, (float)1, (float)0.5);
 	}
+	
+	void displayColorArray(JFrame f)
+	{
+		Container c = f.getContentPane();
+		Color[] colorArr = colorArray();
+		for (int i = 0; i < colorArr.length; ++i)
+		{	
+			c.setBackground(colorArr[i]);
+	        try {
+	            // thread to sleep for 1000 milliseconds
+	            Thread.sleep(delay);
+	        } catch (Exception e) {
+	        	System.out.println(e);
+	        }
+		}
+	}
+	
 }
 
 
@@ -41,7 +57,6 @@ public class color {
 	public static void main(String[] args)
 	{
 		JFrame f = new JFrame();
-		Container c = f.getContentPane(); 
 		
 		int[] notes = new int[] {1,3,8,4,3,2,2,10,1,3,4,0,1,0};
 		myColor col = new myColor(notes);
@@ -50,15 +65,6 @@ public class color {
 		f.setLayout(null);//using no layout managers  
 		f.setVisible(true);//making the frame visible  
 
-		for (int i = 0; i < colorArr.length; ++i)
-		{	
-			c.setBackground(colorArr[i]);
-	        try {
-	            // thread to sleep for 1000 milliseconds
-	            Thread.sleep(1000);
-	        } catch (Exception e) {
-	        	System.out.println(e);
-	        }
-		}
+		col.displayColorArray(f);
 	}
 }
