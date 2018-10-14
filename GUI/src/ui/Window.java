@@ -44,6 +44,12 @@ public class Window implements Runnable {
 	}
 	
 	public void run() {
+		Thread thread = new Thread(new Runnable() { 
+			public void run() { 
+				cCanvas.updateCircles();
+			}
+		});
+		thread.start(); 
         while(true) {
     		
     		if(!function.complete()) {

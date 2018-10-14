@@ -16,7 +16,7 @@ public class Bubble {
 	}
 	
 	public void growBubble() { 
-		radius += 2; 
+		radius += 1; 
 	}
 	
 	public int getRadius() { 
