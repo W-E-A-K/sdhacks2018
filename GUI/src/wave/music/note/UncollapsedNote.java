@@ -8,6 +8,8 @@ public class UncollapsedNote extends Note {
 	
 	private boolean[] canBeNoteArray;
 	private int collapsedIndex;
+	
+	private static final int SEARCH_DISTANCE = 2;
 
 	@Override
 	public boolean isCollapsed() {
@@ -15,17 +17,36 @@ public class UncollapsedNote extends Note {
 	}
 	
 	public boolean canBeNote(CollapsedNote note) {
-		if(note.getPrevNote() == null || note.getNextNote() == null) return false;
-		if(getPrevNote() != null && note.getPrevNote() != null && getPrevNote().isCollapsed()) {
-			if(((CollapsedNote) getPrevNote()).getNote() != ((CollapsedNote) note.getPrevNote()).getNote()) {
-				return false;
-			}
+		//search in the reverse direction
+		Note currNoteOut = this;
+		Note currNoteIn = note;
+		
+		for(int i = 0; i < SEARCH_DISTANCE; i++) {
+			if(currNoteOut.getPrevNote() == null) break;
+			if(currNoteIn.getPrevNote() == null) return false;
+
+			currNoteOut = currNoteOut.getPrevNote();
+			currNoteIn = currNoteIn.getPrevNote();
+			
+			if(!currNoteOut.isCollapsed()) continue;
+			if(((CollapsedNote) currNoteOut).getNote() != ((CollapsedNote) currNoteIn).getNote()) return false;
 		}
-		if(getNextNote() != null && note.getNextNote() != null && getNextNote().isCollapsed()) {
-			if(((CollapsedNote) getNextNote()).getNote() != ((CollapsedNote) note.getNextNote()).getNote()) {
-				return false;
-			}
+		
+		//search in the forward direction
+		currNoteOut = this;
+		currNoteIn = note;
+		for(int i = 0; i <SEARCH_DISTANCE; i++) {
+			if(currNoteOut.getNextNote() == null) break;
+			if(currNoteIn.getNextNote() == null) return false;
+
+			currNoteOut = currNoteOut.getNextNote();
+			currNoteIn = currNoteIn.getNextNote();
+			
+			if(!currNoteOut.isCollapsed()) continue;
+			
+			if(((CollapsedNote) currNoteOut).getNote() != ((CollapsedNote) currNoteIn).getNote()) return false;
 		}
+		
 		return true;
 	}
 	

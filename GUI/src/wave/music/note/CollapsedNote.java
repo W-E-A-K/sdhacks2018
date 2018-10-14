@@ -24,5 +24,9 @@ public class CollapsedNote extends Note {
 	public int getNote() {
 		return note;
 	}
+	
+	public int getLength() {
+		return length;
+	}
 
 }

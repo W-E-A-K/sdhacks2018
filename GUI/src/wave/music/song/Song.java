@@ -37,7 +37,8 @@ public class Song {
 			
 	        line.start();
 	        for  (Note n : getNotes()) {
-	            play(line, NoteLetters.values()[1 + ((CollapsedNote) n).getNote()], 500);
+	            play(line, NoteLetters.values()[1 + ((CollapsedNote) n).getNote()], ((CollapsedNote) n).getLength() * 500);
+	            play(line, NoteLetters.REST, 10);
 	        }
 	        line.drain();
 	        line.close();
@@ -54,19 +55,21 @@ public class Song {
 	
 	public enum NoteLetters {
 
-	    G3$, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
+	    REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
 	    public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
 	    public static final int SECONDS = 2;
 	    private byte[] sin = new byte[SECONDS * SAMPLE_RATE];
 
 	    NoteLetters() {
-	        int n = this.ordinal();
-	        double exp = ((double) n - 1) / 12d;
-	        double f = 440d * Math.pow(2d, exp);
-	        for (int i = 0; i < sin.length; i++) {
-	            double period = (double)SAMPLE_RATE / f;
-	            double angle = 2.0 * Math.PI * i / period;
-	            sin[i] = (byte)(Math.sin(angle) * 127f);
+	    	int n = this.ordinal();
+	        if (n > 0) {
+	            double exp = ((double) n - 1) / 12d;
+	            double f = 440d * Math.pow(2d, exp);
+	            for (int i = 0; i < sin.length; i++) {
+	                double period = (double)SAMPLE_RATE / f;
+	                double angle = 2.0 * Math.PI * i / period;
+	                sin[i] = (byte)(Math.sin(angle) * 127f);
+	            }
 	        }
 	    }
 
