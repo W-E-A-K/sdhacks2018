@@ -29,13 +29,17 @@ public class OutputSong extends Song {
 			minCollapsedNoteIndex = (int)(Math.random() * notes.size());
 		}while(notes.get(minCollapsedNoteIndex) instanceof CollapsedNote);
 
+		System.out.println("WaveFunc:");
 		for(int i = 0; i < notes.size(); i++) {
 			if(!notes.get(i).isCollapsed()) {
+				System.out.print(((UncollapsedNote) notes.get(i)).getCollapsedIndex() + " ");
 				if(((UncollapsedNote) notes.get(i)).getCollapsedIndex() < ((UncollapsedNote) notes.get(minCollapsedNoteIndex)).getCollapsedIndex()) {
 					minCollapsedNoteIndex = i;
 				}
-			}
+			}else
+				System.out.print("0 ");
 		}
+		System.out.println();
 		
 		collapseNote(minCollapsedNoteIndex, song);
 		

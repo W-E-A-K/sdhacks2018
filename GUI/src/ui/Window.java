@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 import wave.music.WaveFunction;
+import wave.music.song.PlayingSong;
 
 public class Window implements Runnable {
 	
@@ -43,11 +44,13 @@ public class Window implements Runnable {
 	}
 	
 	public void run() {
+		new Thread(new PlayingSong(function.getInputSong())).start();
         while(true) {
     		
     		if(!function.complete()) {
     			function.update();
-    			
+    			if(function.complete())
+    				new Thread(new PlayingSong(function.getCompleteSong())).start();
     		}
     		
     		noteCanvas.update();

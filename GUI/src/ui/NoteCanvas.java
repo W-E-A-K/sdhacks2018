@@ -2,9 +2,7 @@ package ui;
 import java.awt.BasicStroke;
 import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Stroke;
 
 import wave.music.WaveFunction;
 import wave.music.note.CollapsedNote;
@@ -27,9 +25,9 @@ public class NoteCanvas extends Canvas {
 		
 		for(int i = 0; i < function.getInputSong().getNotes().size(); i++) {
 			if(i % 4 == 0) {
-				drawBar(g2, 100 / 4 * (i % 40), 80 * (i / 40));
+				drawBar(g2, 100 / 4 * (i % 40), 30 + 80 * (i / 40));
 			}
-			drawNote(g2, 100 / 4 * (i % 40), 80 * (i / 40), function.getInputSong().getNotes().get(i));
+			drawNote(g2, 100 / 4 * (i % 40), 30 + 80 * (i / 40), function.getInputSong().getNotes().get(i));
 		}
 		
 		for(int i = 0; i < function.getCompleteSong().getNotes().size(); i++) {
@@ -57,7 +55,7 @@ public class NoteCanvas extends Canvas {
 	
 	public void drawNote(Graphics2D g2, int x, int y, Note note) {
 		if(note instanceof CollapsedNote)
-			g2.drawArc(x + 3, y - 3 + 5 * ((CollapsedNote) note).getNote(), 5, 5, 0, 360);
+			g2.drawArc(x + 3, y - 3 + 5 * (6 - ((CollapsedNote) note).getNote()), 5, 5, 0, 360);
 	}
 	
 }
