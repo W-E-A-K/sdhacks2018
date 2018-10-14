@@ -9,7 +9,7 @@ public class UncollapsedNote extends Note {
 	private boolean[] canBeNoteArray;
 	private int collapsedIndex;
 	
-	private static final int SEARCH_DISTANCE = 2;
+	private static final int SEARCH_DISTANCE = 3;
 
 	@Override
 	public boolean isCollapsed() {
