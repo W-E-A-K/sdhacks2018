@@ -54,7 +54,7 @@ public class CircleCanvas extends Canvas {
 			g2.fillOval( x, y, b.getRadius()*2, b.getRadius()*2 );
 			
 			//if bubble radius > certain amount, delete from list 
-			if( b.getRadius() > width ) { 
+			if( b.getRadius() > width / 4 ) { 
 				list.remove(b); 
 			}
 		}

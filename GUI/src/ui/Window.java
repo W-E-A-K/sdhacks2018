@@ -45,6 +45,12 @@ public class Window implements Runnable {
 	}
 	
 	public void run() {
+		Thread thread = new Thread(new Runnable() { 
+			public void run() { 
+				cCanvas.updateCircles();
+			}
+		});
+		thread.start();
 		new Thread(new PlayingSong(function.getInputSong())).start();
         while(true) {
     		
