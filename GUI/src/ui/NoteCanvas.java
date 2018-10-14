@@ -14,7 +14,7 @@ public class NoteCanvas extends Canvas {
 	
 	public NoteCanvas(WaveFunction function) {
 		this.function = function;
-		setSize(1000,400); 
+		setSize(1000,600); 
 		setBackground( Color.WHITE );
 		
 	}
@@ -55,7 +55,7 @@ public class NoteCanvas extends Canvas {
 	
 	public void drawNote(Graphics2D g2, int x, int y, Note note) {
 		if(note instanceof CollapsedNote)
-			g2.drawArc(x + 3, y - 3 + 5 * (6 - ((CollapsedNote) note).getNote()), 5, 5, 0, 360);
+			g2.drawArc(x + 3, y - 3 + 5 * (13 - ((CollapsedNote) note).getNote()), 5, 5, 0, 360);
 	}
 	
 }

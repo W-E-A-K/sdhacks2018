@@ -59,7 +59,7 @@ public class Window implements Runnable {
     		cCanvas.updateCircles();
         	
         	try{
-        		Thread.sleep(200);
+        		Thread.sleep(350);
         	}
         	catch(InterruptedException e){
         		System.out.println(e);

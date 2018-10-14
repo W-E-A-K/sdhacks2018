@@ -55,7 +55,7 @@ public class Song {
 	
 	public enum NoteLetters {
 
-	    REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
+	    REST, D3, D3$, E3, F3, F3$, G3, G3$, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5, A5$, B5, C5, C5$, D5, D5$, E5, F5, F5$, G5, G5$;
 	    public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
 	    public static final int SECONDS = 2;
 	    private byte[] sin = new byte[SECONDS * SAMPLE_RATE];
@@ -63,7 +63,7 @@ public class Song {
 	    NoteLetters() {
 	    	int n = this.ordinal();
 	        if (n > 0) {
-	            double exp = ((double) n - 1) / 12d;
+	            double exp = ((double) n - 8) / 12d;
 	            double f = 440d * Math.pow(2d, exp);
 	            for (int i = 0; i < sin.length; i++) {
 	                double period = (double)SAMPLE_RATE / f;
