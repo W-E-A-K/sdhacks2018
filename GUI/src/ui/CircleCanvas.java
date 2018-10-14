@@ -43,7 +43,7 @@ public class CircleCanvas extends Canvas {
 		Graphics g = this.getGraphics(); 
 		Graphics g2 = (Graphics2D) g;
 		
-		for( Bubble b : list ) { 
+		for( Bubble b : list )  { 
 			//increase radius of bubble 
 			b.growBubble();
 			
