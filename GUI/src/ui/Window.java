@@ -14,7 +14,7 @@ public class Window implements Runnable {
 	private Panel controlPanel;
 	private WaveFunction function;
 	private NoteCanvas noteCanvas;
-
+	private CircleCanvas cCanvas; 
 	
     /**
      * Create the GUI and show it.  For thread safety,
@@ -30,7 +30,8 @@ public class Window implements Runnable {
 
         
         controlPanel = new Panel(); 
-        controlPanel.add( new CircleCanvas() );
+        cCanvas = new CircleCanvas();
+        controlPanel.add( cCanvas );
         noteCanvas = new NoteCanvas(function);
         controlPanel.add( noteCanvas );
         controlPanel.setLayout(new BoxLayout(controlPanel, 1));
@@ -54,6 +55,8 @@ public class Window implements Runnable {
     		}
     		
     		noteCanvas.update();
+    		cCanvas.addCircle(); 
+    		cCanvas.updateCircles();
         	
         	try{
         		Thread.sleep(200);
