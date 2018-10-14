@@ -23,4 +23,8 @@ public class WaveFunction {
 	public OutputSong getCompleteSong() {
 		return outputSong;
 	}
+
+	public InputSong getInputSong() {
+		return inputSong;
+	}
 }

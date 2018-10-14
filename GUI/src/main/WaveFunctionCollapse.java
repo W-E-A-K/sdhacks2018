@@ -14,46 +14,28 @@ public class WaveFunctionCollapse {
 		song.addNote(new CollapsedNote(1));
 		song.addNote(new CollapsedNote(2));
 		song.addNote(new CollapsedNote(3));
-		song.addNote(new CollapsedNote(2));
-		song.addNote(new CollapsedNote(1));
-		song.addNote(new CollapsedNote(0));
-		song.addNote(new CollapsedNote(1));
+		song.addNote(new CollapsedNote(5));
 		song.addNote(new CollapsedNote(3));
-		song.addNote(new CollapsedNote(1));
-		song.addNote(new CollapsedNote(2));
-		song.addNote(new CollapsedNote(1));
+		song.addNote(new CollapsedNote(4));
+		song.addNote(new CollapsedNote(5));
 		song.addNote(new CollapsedNote(3));
-		song.addNote(new CollapsedNote(1));
-		song.addNote(new CollapsedNote(2));
-		song.addNote(new CollapsedNote(1));
-		song.addNote(new CollapsedNote(2));
+		song.addNote(new CollapsedNote(4));
+		song.addNote(new CollapsedNote(5));
+		song.addNote(new CollapsedNote(6));
+		song.addNote(new CollapsedNote(7));
 		song.addNote(new CollapsedNote(3));
+		song.addNote(new CollapsedNote(6));
+		song.addNote(new CollapsedNote(3));
+		song.addNote(new CollapsedNote(6));
 		song.addNote(new CollapsedNote(2));
 		song.addNote(new CollapsedNote(1));
-		song.addNote(new CollapsedNote(0));
+		song.addNote(new CollapsedNote(4));
+		song.addNote(new CollapsedNote(5));
 		WaveFunction func = new WaveFunction(song);
 		
         //Schedule a job for the event-dispatching thread:
         //creating and showing this application's GUI.
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                Window window = new Window();
-                while(true) {
-            		
-            		if(!func.complete()) {
-            			func.update();
-            			
-            		}
-                	
-                	try{
-                		Thread.sleep(500);
-                	}
-                	catch(InterruptedException e){
-                		System.out.println(e);
-                	}
-                }
-            }
-        });
+		new Thread(new Window(func)).start();
 	}
 	
 }

@@ -4,10 +4,15 @@ import java.awt.Panel;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
-public class Window {
+import wave.music.WaveFunction;
+
+public class Window implements Runnable {
 	
 	private Panel controlPanel;
+	private WaveFunction function;
+	private NoteCanvas noteCanvas;
 
 	
     /**
@@ -15,7 +20,8 @@ public class Window {
      * this method should be invoked from the
      * event-dispatching thread.
      */
-	public Window() {
+	public Window(WaveFunction function) {
+		this.function = function;
 
         //Create and set up the window.
         JFrame frame = new JFrame("Musical Notes");
@@ -24,7 +30,8 @@ public class Window {
         
         controlPanel = new Panel(); 
         controlPanel.add( new CircleCanvas() );
-        controlPanel.add( new NoteCanvas() );
+        noteCanvas = new NoteCanvas(function);
+        controlPanel.add( noteCanvas );
         controlPanel.setLayout(new BoxLayout(controlPanel, 1));
         
         frame.add(controlPanel);
@@ -34,5 +41,24 @@ public class Window {
         //Display the window.
         frame.pack();
 	}
+	
+	public void run() {
+        while(true) {
+    		
+    		if(!function.complete()) {
+    			function.update();
+    			
+    		}
+    		
+    		noteCanvas.update();
+        	
+        	try{
+        		Thread.sleep(200);
+        	}
+        	catch(InterruptedException e){
+        		System.out.println(e);
+        	}
+        }
+    }
 
 }
